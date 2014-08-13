@@ -1,0 +1,20 @@
+<div id="wrapper">
+	<div id="search">
+			<%= form_tag home_index_path, :method => 'get', id: 'inputs' do %>
+	    	<%= text_field_tag :q, nil, placeholder: 'Enter search term' %>
+	    	<%= submit_tag "Submit" %>
+	<% end %>
+	</div>
+
+	<div id="searched"><%=@q %></div> 
+
+	<ul id="vids"> 
+	<% i = 0 %>
+		<% @main.each do |video| %>
+	<%=	"<li id='videos_#{i}'><iframe width='180' height='150' src='//www.youtube.com/embed/#{video[:id]}?rel=0&autoplay=2&controls=0&showinfo=0' frameborder='0'></iframe> </li>".html_safe %>
+	<% i += 1 %>
+		<% end %>
+	</ul>
+	<%= render partial: "books" %>
+
+</div>
